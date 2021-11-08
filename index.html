@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BMW Contact VIP Sales</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script defer src="https://unpkg.com/alpinejs@3.4.2/dist/cdn.min.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form x-data="contactForm()" x-ref="contactForm" @submit.prevent="">
+            <h2>TELL US ABOUT YOUR NEW BMW OR MINI.</h2>
+
+            <p class="intro">
+                Please use the template below to provide us with relevant information. Our colleagues in your home country will be pleased to prepare the perfect offer for you.
+            </p>
+
+            <div class="wrapper">
+                <div class="form-group form-group-gender" x-bind:class="{ 'invalid': triedSubmit && firstName === '' }">
+                    <label for="female">
+                        Female
+                    </label>
+                    <input type="radio" name="gender" required value="female" x-model="gender" @blur="buildLink">
+                    <label for="male">
+                        Male
+                    </label>
+                    <input type="radio" name="gender" required value="male" x-model="gender" @blur="buildLink">
+
+                    <p class="error-message" x-show="triedSubmit && gender === ''">
+                        This field is required
+                    </p>
+                </div>
+
+                <div class="form-group" x-bind:class="{ 'invalid': triedSubmit && firstName === '' }">
+                    <label for="first-name">
+                        First Name*
+                    </label>
+
+                    <input type="text" id="first-name" required maxlength="50" x-model="firstName" @blur="buildLink">
+
+                    <p class="error-message" >
+                        This field is required
+                    </p>
+                </div>
+
+                <div class="form-group" x-bind:class="{ 'invalid': triedSubmit && lastName === '' }">
+                    <label for="last-name">
+                        Last Name*
+                    </label>
+                    <input type="text" id="last-name" required maxlength="50" x-model="lastName" @blur="buildLink">
+
+                    <p class="error-message">
+                        This field is required
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="street-and-number">
+                        Street
+                    </label>
+
+                    <input type="text" id="street-and-number" required maxlength="50" x-model="streetAndNumber" @blur="buildLink">
+                </div>
+
+                <div class="form-group" x-bind:class="{ 'invalid': triedSubmit && zipAndCity === '' }">
+                    <label for="zip-and-city">
+                        Zip Code / City*
+                    </label>
+
+                    <input type="text" id="zip-and-city" required maxlength="50" x-model="zipAndCity" @blur="buildLink">
+
+                    <p class="error-message">
+                        This field is required
+                    </p>
+                </div>
+
+                <div class="form-group" x-bind:class="{ 'invalid': triedSubmit && country === '' }">
+                    <label for="country">
+                        Country*
+                    </label>
+
+                    <input type="text" id="country" required maxlength="50" x-model="country" @blur="buildLink">
+
+                    <p class="error-message">
+                        This field is required
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">
+                        Phone
+                    </label>
+
+                    <input type="text" id="phone" pattern="[0-9]+" x-model="phone" @blur="buildLink">
+                </div>
+
+                <div class="form-group" x-bind:class="{ 'invalid': triedSubmit && email === '' }">
+                    <label for="email">
+                        E-Mail*
+                    </label>
+
+                    <input type="text" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" x-model="email" @blur="buildLink">
+
+                    <p class="error-message">
+                        This field is required
+                    </p>
+                </div>
+
+                <div class="form-group" x-bind:class="{ 'invalid': triedSubmit && motoPassNumber === '' }">
+                    <label for="moto-pass-number">
+                        MotoGP Pass No.*
+                    </label>
+
+                    <input type="text" id="moto-pass-number" required maxlength="50" x-model="motoPassNumber" @blur="buildLink">
+
+                    <p class="error-message">
+                        This field is required
+                    </p>
+                </div>
+
+                <div class="form-group form-group-bmw-model" x-bind:class="{ 'invalid': triedSubmit && bmwModel.length > 50 }">
+                    <label for="bmw-model">
+                        BMW Model:
+                    </label>
+
+                    <input type="text" class="text-input" id="bmw-model" maxlength="50" x-model="bmwModel" @blur="buildLink">
+
+                    <p class="error-message" x-show="triedSubmit && bmwModel.length > 50">
+                        Only 50 characters allowed
+                    </p>
+                </div>
+
+                <div class="form-group form-group-mini-model">
+                    <label for="mini-model">
+                        Mini Model:
+                    </label>
+
+                    <input type="text" id="mini-model" maxlength="50" x-model="miniModel" @blur="buildLink">
+
+                    <p class="error-message" x-show="triedSubmit && miniModel.length > 50">
+                        Only 50 characters allowed
+                    </p>
+                </div>
+
+                <div class="form-group form-group-message">
+                    <label for="message">
+                        Please leave your message or your preferred configuration from the BMW/MINI car configurator:
+                    </label>
+
+                    <textarea type="text" id="message" maxlength="300" rows="10" x-model="message" @blur="buildLink"></textarea>
+
+                    <p class="error-message" x-show="triedSubmit && message.length > 300">
+                        Only 300 characters allowed
+                    </p>
+                </div>
+            </div>
+
+            <div class="checkbox" x-bind:class="{ 'invalid': triedSubmit && !dataProtection }">
+                <input type="checkbox" name="checkbox" id="checkbox" required x-model="dataProtection" @blur="buildLink">
+
+                <label for="checkbox" class="label-checkbox">
+                    I agree that BMW AG passes on my data to BMW’s respective national sales company and to certain authorized dealers (my stated
+                    preferred dealer, partners of my car purchases, service or consulting visits or my regional partner) in the country of my current residence
+                    and that these companies process and use my data and contact me for an individual offer.
+                </label>
+
+                <p class="error-message" x-show="triedSubmit && !dataProtection">
+                    This field is required
+                </p>
+            </div>
+
+            <div class="mandatory-field">
+                <p>*Mandatory fields</p>
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+            <div class="submit-button">
+                <button type="submit" @click="submit">Submit</button>
+            </div>
+        </div>
+
+        </form>
+    </div>
+    <script type="text/javascript" src="js/contentFrameResizer_3_5_3.js"></script>
+</body>
+</html>
