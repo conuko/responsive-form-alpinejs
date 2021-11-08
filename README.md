@@ -9,4 +9,5 @@ https://alpinejs.dev/
 
 ## iFrame Resizer
 
-I use the iframe-resizer from David J Bradshaw to enable the automatic resizing of the height and width of both same and cross domain iFrames to fit their contained content.
+I use the iframe-resizer from David J Bradshaw to enable the automatic resizing of the height and width of both same and cross domain iFrames to fit their contained content:
+https://github.com/davidjbradshaw/iframe-resizer
