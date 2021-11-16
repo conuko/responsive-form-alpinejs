@@ -1,4 +1,4 @@
-# A responsive from with GRID and ALPINE JS
+# A responsive form with GRID and ALPINE JS
 
 This form was created with HTML, CSS GRID and ALPINE JS with a mobile first approach. It can be used as standalone Form or inside an iFrame.
 
