@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BMW Contact VIP Sales</title>
+    <title>Alpine JS Contact Form</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -15,11 +15,10 @@
 <body>
     <div class="container">
         <form x-data="contactForm()" x-ref="contactForm" @submit.prevent="">
-            <h2>TELL US ABOUT YOUR NEW BMW OR MINI.</h2>
+            <h2>YOUR INFO GOES HERE.</h2>
 
             <p class="intro">
-                Please use the template below to provide us with relevant information. Our colleagues in your home country will be pleased to prepare the perfect offer for you.
-            </p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus sapien sit amet massa vehicula fermentum.             </p>
 
             <div class="wrapper">
                 <div class="form-group form-group-gender" x-bind:class="{ 'invalid': triedSubmit && firstName === '' }">
@@ -114,7 +113,7 @@
 
                 <div class="form-group" x-bind:class="{ 'invalid': triedSubmit && motoPassNumber === '' }">
                     <label for="moto-pass-number">
-                        MotoGP Pass No.*
+                        Random Number*
                     </label>
 
                     <input type="text" id="moto-pass-number" required maxlength="50" x-model="motoPassNumber" @blur="buildLink">
@@ -126,7 +125,7 @@
 
                 <div class="form-group form-group-bmw-model" x-bind:class="{ 'invalid': triedSubmit && bmwModel.length > 50 }">
                     <label for="bmw-model">
-                        BMW Model:
+                        Lorem Ipsum:
                     </label>
 
                     <input type="text" class="text-input" id="bmw-model" maxlength="50" x-model="bmwModel" @blur="buildLink">
@@ -138,7 +137,7 @@
 
                 <div class="form-group form-group-mini-model">
                     <label for="mini-model">
-                        Mini Model:
+                        Lopem Ipsum:
                     </label>
 
                     <input type="text" id="mini-model" maxlength="50" x-model="miniModel" @blur="buildLink">
@@ -150,7 +149,7 @@
 
                 <div class="form-group form-group-message">
                     <label for="message">
-                        Please leave your message or your preferred configuration from the BMW/MINI car configurator:
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit:
                     </label>
 
                     <textarea type="text" id="message" maxlength="300" rows="10" x-model="message" @blur="buildLink"></textarea>
@@ -165,9 +164,9 @@
                 <input type="checkbox" name="checkbox" id="checkbox" required x-model="dataProtection" @blur="buildLink">
 
                 <label for="checkbox" class="label-checkbox">
-                    I agree that BMW AG passes on my data to BMW’s respective national sales company and to certain authorized dealers (my stated
-                    preferred dealer, partners of my car purchases, service or consulting visits or my regional partner) in the country of my current residence
-                    and that these companies process and use my data and contact me for an individual offer.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus sapien sit amet massa vehicula fermentum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus sapien sit amet massa vehicula fermentum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque maximus sapien sit amet massa vehicula fermentum. 
                 </label>
 
                 <p class="error-message" x-show="triedSubmit && !dataProtection">
